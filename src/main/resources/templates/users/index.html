@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div layout:fragment="content" >
+
+        <div class="card" style="width: 18rem;" th:each="user : ${users}" th:object="${user}">
+            <div class="card-body">
+                <h5 class="card-title" th:text="*{firstName}">Card title</h5>
+                <h6 class="card-subtitle mb-2 text-muted" th:text="*{lastName}">Card subtitle</h6>
+                <p class="card-text" th:text="*{email}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+               <div class="row">
+                    <a th:href="@{/users/__*{id}__/edit}" class="card-link">edit</a>
+                    <form th:method="delete" th:action="@{/users/__*{id}__}">
+                    <button type="submit"  class="card-link">delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
